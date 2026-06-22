@@ -1,24 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="YOUR_UNIQUE_CODE" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phoenix Portfolio Tracker | Professional Wealth Dashboard</title>
+    
+    <!-- Google SEO & Quality Essentials -->
+    <title>Phoenix Portfolio Tracker | Real-Time Mutual Fund & Equity Sheet</title>
+    <meta name="description" content="Track your complete net worth in real-time. A secure Google Sheets portfolio dashboard built for Indian investors tracking equity, direct mutual funds, and XIRR.">
+    <meta name="google-site-verification" content="YOUR_UNIQUE_CODE" />
+    <link rel="canonical" href="https://yourdomain.com/" />
+
+    <!-- Open Graph Presentation -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="Phoenix Portfolio & Mutual Fund Tracker">
+    <meta property="og:description" content="Consolidate equity, mutual funds, and total net worth in absolute real-time inside your own secure Google Sheets dashboard.">
+    <meta property="og:image" content="https://yourdomain.com/assets/og-preview-image.jpg">
+
+    <!-- Twitter / X Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Phoenix Portfolio & Mutual Fund Tracker">
+    <meta name="twitter:description" content="Consolidate equity, mutual funds, and total net worth in absolute real-time inside your own secure Google Sheets dashboard.">
+
+    <style>
+        /* Legal Modals Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .modal-content {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: #cbd5e1;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            background: none; border: none;
+            color: #94a3b8; font-size: 24px; cursor: pointer;
+        }
+        .modal-close:hover { color: #f8fafc; }
+        .legal-link {
+            color: #94a3b8; text-decoration: underline; cursor: pointer; font-size: 14px;
+        }
+        .legal-link:hover { color: #38bdf8; }
+    </style>
 </head>
 <body style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
 
-    <div style="background: #1e293b; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155;">
+    <main style="background: #1e293b; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155;">
         
-        <div style="font-size: 48px; margin-bottom: 10px;">📈</div>
-        <h1 style="color: #38bdf8; font-size: 36px; margin-bottom: 15px; font-weight: 800; letter-spacing: -0.5px;">
-            Phoenix Portfolio & Mutual Fund Tracker
-        </h1>
-        <p style="font-size: 19px; color: #94a3b8; max-width: 700px; margin: 0 auto 35px auto;">
-            The ultimate automated workspace built for Indian investors to consolidate equity, mutual funds, and total net worth in absolute real-time.
-        </p>
+        <header style="text-align: center; margin-bottom: 35px;">
+            <div style="font-size: 48px; margin-bottom: 10px;" aria-hidden="true">📈</div>
+            <h1 style="color: #38bdf8; font-size: 36px; margin-top: 0; margin-bottom: 15px; font-weight: 800; letter-spacing: -0.5px;">
+                Phoenix Portfolio & Mutual Fund Tracker
+            </h1>
+            <p style="font-size: 19px; color: #94a3b8; max-width: 700px; margin: 0 auto;">
+                The ultimate automated workspace built for Indian investors to consolidate equity, mutual funds, and total net worth in absolute real-time.
+            </p>
+        </header>
 
-        <div style="text-align: left; background: #0f172a; padding: 25px; border-radius: 12px; margin-bottom: 35px; border: 1px solid #334155;">
+        <section style="text-align: left; background: #0f172a; padding: 25px; border-radius: 12px; margin-bottom: 35px; border: 1px solid #334155;">
             <h2 style="color: #f8fafc; font-size: 22px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #38bdf8; display: inline-block; padding-bottom: 4px;">Why Phoenix? The Investor's Problem</h2>
             <p style="color: #cbd5e1; margin-bottom: 15px;">
                 As investors, our money is scattered everywhere—broking apps for stocks, various platforms for direct mutual funds, and bank accounts for liquidity. Tracking your actual day-to-day net worth and true annualized returns (XIRR) across multiple apps becomes a chaotic, manual chore.
@@ -26,20 +84,21 @@
             <p style="color: #cbd5e1; margin-bottom: 0;">
                 The <strong>Phoenix Portfolio Tracker</strong> eliminates the fragmentation. Built completely inside Google Sheets, it pulls real-time financial market parameters and calculations straight into a single private dashboard. No subscription locked inside a third-party app, no selling your financial data—just automated, institutional-grade mathematical clarity over your entire net worth.
             </p>
-        </div>
+        </section>
 
-        <div style="background: rgba(56, 189, 248, 0.08); border: 1px dashed #38bdf8; padding: 25px; border-radius: 12px; margin-bottom: 40px;">
-            <div style="font-size: 24px; margin-bottom: 8px;">📊</div>
+        <section style="background: rgba(56, 189, 248, 0.08); border: 1px dashed #38bdf8; padding: 25px; border-radius: 12px; margin-bottom: 40px; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;" aria-hidden="true">📊</div>
             <h3 style="margin-top: 0; color: #38bdf8; font-size: 19px; font-weight: 700;">👀 Want to inspect the metrics engine live?</h3>
             <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 15px;">Explore the layout, interface interactive architecture, and view exactly how your data organizes into clean analytics dashboards.</p>
             <a href="https://docs.google.com/spreadsheets/d/1gEkSQ83NY9rfyVHbts-NkFKtZFMJLXbc146OH18FUoo/edit?usp=sharing" 
                target="_blank"
+               rel="noopener noreferrer"
                style="background-color: #38bdf8; color: #0f172a; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 15px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);">
                 Launch Interactive Live Sheet Demo ↗
             </a>
-        </div>
+        </section>
 
-        <div style="text-align: left; margin-bottom: 40px;">
+        <section style="text-align: left; margin-bottom: 40px;">
             <p style="margin: 0 0 15px 0; font-weight: bold; color: #94a3b8; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Engine Capabilities:</p>
             
             <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 15px 20px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #10b981;">
@@ -65,24 +124,146 @@
                 </div>
                 <div style="color: #f59e0b; font-weight: bold; font-size: 18px;">🔒 Secure</div>
             </div>
-        </div>
+        </section>
 
-        <p style="font-size: 16px; font-weight: 600; color: #94a3b8; margin-bottom: 25px;">Ready to deploy your customized sheet? Select your checkout path:</p>
-
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <!-- Feedback Form Section -->
+        <section style="background: #0f172a; padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid #334155;">
+            <h2 style="color: #38bdf8; font-size: 22px; margin-top: 0; margin-bottom: 8px; font-weight: 700;">Share Your Feedback</h2>
+            <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px; margin-top: 0;">Have a suggestion or feature request for the tracker? Let us know!</p>
             
-            <a href="https://payments.pabbly.com/checkout/6a32d0cc6c9ed654dee4cff4" 
-               style="background-color: #0284c7; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px; min-width: 220px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3); transition: transform 0.2s;">
-                Subscribe via Pabbly (₹)
-            </a>
+            <form action="YOUR_FORM_BACKEND_URL" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="feedback-name" style="display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;">Your Name</label>
+                        <input type="text" id="feedback-name" name="name" required placeholder="John Doe" 
+                               style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px;">
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="feedback-email" style="display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;">Email Address</label>
+                        <input type="email" id="feedback-email" name="email" required placeholder="john@example.com" 
+                               style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px;">
+                    </div>
+                </div>
 
-            <a href="https://yashkanabar4.gumroad.com/l/ivpyvd" 
-               style="background-color: #e11d48; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px; min-width: 220px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3); transition: transform 0.2s;">
-                Subscribe via Gumroad ($)
-            </a>
+                <div>
+                    <label for="feedback-message" style="display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;">Message / Feature Request</label>
+                    <textarea id="feedback-message" name="message" rows="4" required placeholder="What features would make this tracker better for you?" 
+                              style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 12px 14px; color: #f8fafc; font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
+                </div>
 
+                <button type="submit" style="background-color: #10b981; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; align-self: flex-start; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);">
+                    Submit Feedback
+                </button>
+            </form>
+        </section>
+
+        <!-- Checkout Selection Section -->
+        <section style="text-align: center; margin-bottom: 40px;">
+            <p style="font-size: 16px; font-weight: 600; color: #94a3b8; margin-bottom: 25px;">Ready to deploy your customized sheet? Select your checkout path:</p>
+
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://payments.pabbly.com/checkout/6a32d0cc6c9ed654dee4cff4" 
+                   target="_blank" rel="noopener noreferrer"
+                   style="background-color: #0284c7; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px; min-width: 220px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);">
+                    Subscribe via Pabbly (₹)
+                </a>
+
+                <a href="https://payments.pabbly.com/checkout/6a3950841ef39db9bb2b3779" 
+                   target="_blank" rel="noopener noreferrer"
+                   style="background-color: #0369a1; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px; min-width: 220px; box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);">
+                    Subscribe via Pabbly ($)
+                </a>
+
+                <a href="https://form.jotform.com/242675233589063" 
+                   target="_blank" rel="noopener noreferrer"
+                   style="background-color: #0f837d; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px; min-width: 220px; box-shadow: 0 4px 12px rgba(15, 131, 125, 0.3);">
+                    Subscribe via Jotform
+                </a>
+
+                <a href="https://yashkanabar4.gumroad.com/l/ivpyvd" 
+                   target="_blank" rel="noopener noreferrer"
+                   style="background-color: #e11d48; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px; min-width: 220px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);">
+                    Subscribe via Gumroad ($)
+                </a>
+            </div>
+        </section>
+
+        <!-- Google Regulatory Footer -->
+        <footer style="margin-top: 50px; padding-top: 25px; border-top: 1px solid #334155; text-align: center;">
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px;">
+                <span class="legal-link" onclick="toggleModal('disclaimer-modal')">Financial Disclaimer</span>
+                <span class="legal-link" onclick="toggleModal('refund-modal')">Refund Policy</span>
+                <span class="legal-link" onclick="toggleModal('privacy-modal')">Privacy Policy</span>
+                <span class="legal-link" onclick="toggleModal('contact-modal')">Contact Support</span>
+            </div>
+            <p style="color: #64748b; font-size: 13px; margin: 0;">
+                &copy; 2026 Phoenix Tracker. Independent engineering workspace template. Not affiliated with Google Inc.
+            </p>
+        </footer>
+    </main>
+
+    <!-- Modal 1: Financial Disclaimer -->
+    <div id="disclaimer-modal" class="modal-overlay" onclick="closeOnOverlay(event, 'disclaimer-modal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleModal('disclaimer-modal')">&times;</button>
+            <h3 style="color: #38bdf8; margin-top: 0;">Financial Disclaimer</h3>
+            <p>The Phoenix Portfolio Tracker is a data compilation modeling tool built entirely for educational and organizational tracking purposes.</p>
+            <p><strong>We do not provide licensed investment, legal, or financial advice.</strong> All tracking mechanics rely entirely on calculations pulling public formulas and API feeds via Google Sheets. Past performance metrics processed inside this workspace do not guarantee future equity market or mutual fund outcomes.</p>
+            <p>Users assume full independent accountability for all execution steps, financial choices, and risk assessment strategies applied inside their personal accounts.</p>
         </div>
     </div>
 
+    <!-- Modal 2: Refund Policy -->
+    <div id="refund-modal" class="modal-overlay" onclick="closeOnOverlay(event, 'refund-modal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleModal('refund-modal')">&times;</button>
+            <h3 style="color: #38bdf8; margin-top: 0;">Refund & Cancellation Policy</h3>
+            <p>Because the Phoenix Portfolio Tracker is a digital download template asset delivered immediately upon successful checkout authentication, <strong>all purchases are final and non-refundable</strong>.</p>
+            <p>Once access to the master setup engine is granted, we cannot revoke access or extract data back out of your cloud account. We highly encourage evaluating the layout structure and capability architecture using our live interactive demo page link prior to final operational checkout.</p>
+            <p>If you face any functional delivery bugs or account extraction issues, please alert our tracking help system immediately.</p>
+        </div>
+    </div>
+
+    <!-- Modal 3: Privacy Policy -->
+    <div id="privacy-modal" class="modal-overlay" onclick="closeOnOverlay(event, 'privacy-modal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleModal('privacy-modal')">&times;</button>
+            <h3 style="color: #38bdf8; margin-top: 0;">Data Privacy Protection Policy</h3>
+            <p>Your asset security is completely absolute. The Phoenix Portfolio Tracker runs locally inside your secure personal cloud storage ecosystem.</p>
+            <p><strong>Zero remote telemetry pipelines or background developer tracking loops monitor your data.</strong> We do not capture, track, aggregate, or trade any transactional values or balance parameters compiled inside your system sheets.</p>
+            <p>Any identity vectors shared via the standard input feedback framework or direct customer channels are handled entirely securely, mapped strictly for internal performance updates, and never passed along to out-of-network third parties.</p>
+        </div>
+    </div>
+
+    <!-- Modal 4: Contact Support -->
+    <div id="contact-modal" class="modal-overlay" onclick="closeOnOverlay(event, 'contact-modal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleModal('contact-modal')">&times;</button>
+            <h3 style="color: #38bdf8; margin-top: 0;">Contact & Operations Center</h3>
+            <p>Need functional onboarding assistance or encountering an active script calculation bug?</p>
+            <p>Please reach out directly via our operational system coordinates:</p>
+            <ul style="padding-left: 20px; margin: 15px 0;">
+                <li><strong>Support Desk Email:</strong> ypkshorts@gmail.com</li>
+                <li><strong>Response SLA Timeline:</strong> Within 24-48 business hours</li>
+            </ul>
+            <p>Alternatively, you can utilize the inline client feedback box located directly on the main application layout to request optimization tweaks.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            if (modal.style.display === 'flex') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'flex';
+            }
+        }
+        function closeOnOverlay(event, id) {
+            if (event.target.id === id) {
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
