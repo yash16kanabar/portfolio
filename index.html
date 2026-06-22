@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Phoenix Portfolio Tracker | Real-Time Mutual Fund & Equity Sheet</title>
     <meta name="description" content="Track your complete net worth in real-time. A secure Google Sheets portfolio dashboard built for Indian investors tracking equity, direct mutual funds, and XIRR.">
     <meta name="google-site-verification" content="YOUR_UNIQUE_CODE" />
@@ -17,8 +18,106 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Phoenix Portfolio & Mutual Fund Tracker">
     <meta name="twitter:description" content="Consolidate equity, mutual funds, and total net worth in absolute real-time inside your own secure Google Sheets dashboard.">
+
+    <style>
+        /* Core UI Component Styling */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+            background: #0f172a;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .pricing-table th {
+            background: #334155;
+            color: #38bdf8;
+            text-align: left;
+            padding: 10px 12px;
+            font-weight: 600;
+        }
+        .pricing-table td {
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+            color: #cbd5e1;
+        }
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        .price-tag {
+            font-weight: bold;
+            color: #f8fafc;
+        }
+        .checkout-btn {
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 16px;
+            min-width: 220px;
+            text-align: center;
+            padding: 16px 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+        }
+        .upi-id-container {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 16px;
+            color: #f59e0b;
+            font-weight: bold;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .copy-btn {
+            background: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .copy-btn:hover { background: #475569; }
+
+        .form-label {
+            display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;
+        }
+        .form-input {
+            width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px;
+        }
+        .form-input:focus {
+            outline: none; border-color: #38bdf8;
+        }
+        .form-panel {
+            background: #0f172a; padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid #334155;
+        }
+
+        /* Tabs System Configuration */
+        .tab-btn {
+            background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px;
+        }
+        .tab-btn.active {
+            background: #38bdf8; color: #0f172a; border-color: #38bdf8;
+        }
+        .policy-content {
+            display: none; background: #0f172a; border: 1px solid #334155; padding: 25px; border-radius: 8px; margin-top: 20px; text-align: left;
+        }
+    </style>
 </head>
-<body style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 950px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
+<body style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
 
     <main style="background: #1e293b; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155;">
         
@@ -72,7 +171,7 @@
                 <div style="color: #38bdf8; font-weight: bold; font-size: 18px;">% XIRR</div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 15px 20px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 15px 20px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #f59e0b;">
                 <div>
                     <strong style="color: #f8fafc; display: block;">Isolated Sandbox Storage</strong>
                     <span style="color: #94a3b8; font-size: 14px;">Runs inside your cloud storage drive. Zero telemetry pipelines tracking metrics.</span>
@@ -85,19 +184,167 @@
             </div>
         </section>
 
-        <!-- FRONT PAGE EMBED LAYOUT (Embeds segregated files directly onto page) -->
-        <h3 style="color: #38bdf8; font-size: 20px; text-align: left; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 8px;">🛒 Procurement Desk & Checkout Paths</h3>
-        <iframe src="payment.html" style="width: 100%; height: 580px; border: none; border-radius: 12px; margin-bottom: 40px; background: transparent;" loading="lazy"></iframe>
+        <section style="text-align: center; margin-bottom: 45px; background: rgba(15, 23, 42, 0.3); padding: 30px; border-radius: 12px; border: 1px solid #334155;">
+            <p style="font-size: 18px; font-weight: 700; color: #38bdf8; margin-bottom: 25px; margin-top: 0;">Ready to deploy your customized sheet? Select your checkout path:</p>
 
-        <h3 style="color: #10b981; font-size: 20px; text-align: left; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 8px;">📬 Ledger Routing & Customer Feedback Forms</h3>
-        <iframe src="feedback.html" style="width: 100%; height: 640px; border: none; border-radius: 12px; margin-bottom: 40px; background: transparent;" loading="lazy"></iframe>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 35px;">
+                <a href="https://payments.pabbly.com/checkout/6a32d0cc6c9ed654dee4cff4" target="_blank" rel="noopener noreferrer" class="checkout-btn" style="background-color: #0284c7; color: white;">Subscribe via Pabbly (₹)</a>
+                <a href="https://payments.pabbly.com/checkout/6a3950841ef39db9bb2b3779" target="_blank" rel="noopener noreferrer" class="checkout-btn" style="background-color: #0369a1; color: white;">Subscribe via Pabbly ($)</a>
+                <a href="https://form.jotform.com/242675233589063" target="_blank" rel="noopener noreferrer" class="checkout-btn" style="background-color: #0f837d; color: white;">Subscribe via Jotform</a>
+                <a href="https://yashkanabar4.gumroad.com/l/ivpyvd" target="_blank" rel="noopener noreferrer" class="checkout-btn" style="background-color: #e11d48; color: white;">Subscribe via Gumroad ($)</a>
+            </div>
 
-        <h3 style="color: #64748b; font-size: 16px; text-align: left; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 8px;">⚖️ System Disclaimers & Governance Regulations</h3>
-        <iframe src="policies.html" style="width: 100%; height: 350px; border: none; border-radius: 12px; margin-bottom: 20px; background: transparent;" loading="lazy"></iframe>
+            <div style="background: #0f172a; padding: 25px; border-radius: 12px; text-align: left; border: 1px solid #10b981;">
+                <div style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 4px 14px; border-radius: 50px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(16, 185, 129, 0.2);">🇮🇳 Direct Indian UPI Local Gateway</div>
+                <h3 style="color: #f8fafc; margin: 0 0 10px 0; font-size: 19px; font-weight: 700;">Option: Settle Manually via UPI Address</h3>
+                
+                <table class="pricing-table">
+                    <thead><tr><th>Product Workspace Plan</th><th>Pricing (INR)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Automated Google Sheets Portfolio Tracker (30 Days)</td><td class="price-tag">₹1,000</td></tr>
+                        <tr><td>Automated Google Sheets Portfolio Tracker (1 Year)</td><td class="price-tag">₹10,000</td></tr>
+                    </tbody>
+                </table>
 
-        <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #334155; text-align: center;">
-            <p style="color: #64748b; font-size: 13px; margin: 0;">&copy; 2026 Phoenix Tracker. Independent engineering template tracker framework. Not affiliated with Google Inc.</p>
+                <div class="upi-id-container">
+                    <span id="upi-string">yash16kanabar@okaxis</span>
+                    <button class="copy-btn" onclick="copyUPI()">Copy ID</button>
+                </div>
+
+                <a href="upi://pay?pa=yash16kanabar@okaxis&pn=Phoenix%20Tracker&cu=INR" style="background-color: #10b981; color: #0f172a; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: block; text-align: center; font-size: 15px;" onclick="handleUPIIntent(event)">Tap to Pay via Mobile UPI App 📱</a>
+            </div>
+        </section>
+
+        <section class="form-panel" style="border-color: #10b981; text-align: left;">
+            <h2 style="color: #10b981; font-size: 22px; margin-top: 0; margin-bottom: 8px; font-weight: 700;">Submit Manual UPI Proof of Payment</h2>
+            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Completed a manual transfer? Provide your tracking token index parameters below to register activation tracking.</p>
+            
+            <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="hidden" name="_next" value="https://yash16kanabar.github.io/portfolio/index.html">
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="payment-name" class="form-label">Full Name</label>
+                        <input type="text" id="payment-name" name="name" required placeholder="John Doe" class="form-input">
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="payment-email" class="form-label">Email Address (For Account Activation Links)</label>
+                        <input type="email" id="payment-email" name="_replyto" required placeholder="john@example.com" class="form-input">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="payment-utr" class="form-label">UPI Reference Number / 12-Digit UTR Code</label>
+                    <input type="text" id="payment-utr" name="utr_token" required placeholder="Ex: 349127839201" class="form-input">
+                </div>
+
+                <button type="submit" style="background-color: #10b981; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; align-self: flex-start; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);">
+                    Submit Payment Reference
+                </button>
+            </form>
+        </section>
+
+        <section class="form-panel" style="text-align: left;">
+            <h2 style="color: #38bdf8; font-size: 22px; margin-top: 0; margin-bottom: 8px; font-weight: 700;">Share Your Feedback</h2>
+            <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px; margin-top: 0;">Have a layout suggestion or feature asset requests for our portfolio systems? Let us know!</p>
+            
+            <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="hidden" name="_next" value="https://yash16kanabar.github.io/portfolio/index.html">
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="feedback-name" class="form-label">Your Name</label>
+                        <input type="text" id="feedback-name" name="name" required placeholder="John Doe" class="form-input">
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="feedback-email" class="form-label">Email Address</label>
+                        <input type="email" id="feedback-email" name="_replyto" required placeholder="john@example.com" class="form-input">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="feedback-message" class="form-label">Message / Feature Request</label>
+                    <textarea id="feedback-message" name="message" rows="4" required placeholder="What functional formulas or optimizations would make this tracker better for you?" style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 12px 14px; color: #f8fafc; font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" style="background-color: #38bdf8; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; align-self: flex-start; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);">
+                    Submit Feedback
+                </button>
+            </form>
+        </section>
+
+        <section style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #334155;">
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
+                <button class="tab-btn active" id="btn-disclaimer" onclick="showTab('disclaimer')">Financial Disclaimer</button>
+                <button class="tab-btn" id="btn-refund" onclick="showTab('refund')">Refund Policy</button>
+                <button class="tab-btn" id="btn-privacy" onclick="showTab('privacy')">Privacy Policy</button>
+                <button class="tab-btn" id="btn-contact" onclick="showTab('contact')">Contact Support</button>
+            </div>
+
+            <div id="disclaimer" class="policy-content" style="display: block;">
+                <h4 style="color: #38bdf8; margin-top: 0; font-size: 16px;">Financial Disclaimer</h4>
+                <p style="margin: 0; font-size: 14px; color: #cbd5e1;">The Phoenix Portfolio Tracker is an independent organizational computational template structure built strictly for data compilation tracking purposes. <strong>We do not provide licensed investment, legal, or financial advice.</strong> All tracking frameworks rely entirely on internal formulas and API feeds inside your personal Google Sheets setup drive. Users assume full accountability for execution models applied within their private accounts.</p>
+            </div>
+
+            <div id="refund" class="policy-content">
+                <h4 style="color: #38bdf8; margin-top: 0; font-size: 16px;">Refund & Cancellation Policy</h4>
+                <p style="margin: 0; font-size: 14px; color: #cbd5e1;">Because the Phoenix Portfolio Tracker is a digital download template asset delivered immediately upon transaction verification or payment link logging, <strong>all procurement sales are completely final and non-refundable</strong>. Once access to the copyable master dashboard link is shared, we cannot revoke deployment access. Please test requirements using our live sandbox sheet link before ordering.</p>
+            </div>
+
+            <div id="privacy" class="policy-content">
+                <h4 style="color: #38bdf8; margin-top: 0; font-size: 16px;">Data Privacy Protection Policy</h4>
+                <p style="margin: 0; font-size: 14px; color: #cbd5e1;">Your financial database is fully absolute. The tracking dashboard engine executes locally inside your secure personal cloud storage account drive. <strong>Zero telemetry logs or developer tracking background capture hooks pull metrics out of your network sheets.</strong> Information supplied via checkout form pipelines is handled securely for workspace allocation routing strictly.</p>
+            </div>
+
+            <div id="contact" class="policy-content">
+                <h4 style="color: #38bdf8; margin-top: 0; font-size: 16px;">Contact & Operations Center</h4>
+                <p style="margin: 0; font-size: 14px; color: #cbd5e1;">Encountering system formula discrepancies or delivery bugs? Contact our help coordinates immediately:</p>
+                <ul style="padding-left: 20px; margin: 10px 0 0 0; font-size: 14px; color: #f8fafc;">
+                    <li><strong>Support Line Inbox:</strong> ypkshorts@gmail.com</li>
+                    <li><strong>SLA Processing Timeframe:</strong> Within 24-48 business hours</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer style="margin-top: 40px; text-align: center;">
+            <p style="color: #64748b; font-size: 13px; margin: 0;">
+                &copy; 2026 Phoenix Tracker. Independent financial template workspace asset. Not affiliated with Google Inc.
+            </p>
         </footer>
     </main>
+
+    <script>
+        function handleUPIIntent(event) {
+            const isDesktop = !/Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+            if (isDesktop) {
+                event.preventDefault();
+                navigator.clipboard.writeText(document.getElementById("upi-string").innerText);
+                alert("UPI applications launch natively on smartphone architectures.\n\nGood news: Address (yash16kanabar@okaxis) copied to clipboard! Paste it safely into your personal banking system workspace.");
+            }
+        }
+
+        function copyUPI() {
+            navigator.clipboard.writeText(document.getElementById("upi-string").innerText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = 'Copied!';
+                btn.style.backgroundColor = '#10b981';
+                setTimeout(() => {
+                    btn.innerText = 'Copy ID';
+                    btn.style.backgroundColor = '#334155';
+                }, 2000);
+            });
+        }
+
+        function showTab(id) {
+            document.querySelectorAll('.policy-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            const targetContent = document.getElementById(id);
+            if (targetContent) targetContent.style.display = 'block';
+            
+            const targetButton = document.getElementById('btn-' + id);
+            if (targetButton) targetButton.classList.add('active');
+        }
+    </script>
 </body>
 </html>
