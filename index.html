@@ -122,7 +122,7 @@
             font-weight: bold;
             margin: 15px 0;
             display: flex;
-            justify-space: space-between;
+            justify-content: space-between;
             align-items: center;
         }
         .copy-btn {
@@ -156,6 +156,17 @@
             cursor: pointer;
         }
         .inner-modal-btn:hover { background-color: #059669; }
+
+        /* Unified Form Controls */
+        .form-label {
+            display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;
+        }
+        .form-input {
+            width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px;
+        }
+        .form-input:focus {
+            outline: none; border-color: #38bdf8;
+        }
     </style>
 </head>
 <body style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
@@ -197,7 +208,6 @@
         <section style="text-align: left; margin-bottom: 40px;">
             <p style="margin: 0 0 15px 0; font-weight: bold; color: #94a3b8; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Engine Capabilities:</p>
             
-            <!-- Updated to showcase both INR and USD symbols -->
             <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 15px 20px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #10b981;">
                 <div>
                     <strong style="color: #f8fafc; display: block;">Real-Time Price Execution</strong>
@@ -222,7 +232,6 @@
                 <div style="color: #f59e0b; font-weight: bold; font-size: 18px;">🔒 Secure</div>
             </div>
 
-            <!-- New USD Multi-Currency Support Notification Box -->
             <div style="background: rgba(56, 189, 248, 0.04); border: 1px dashed rgba(56, 189, 248, 0.2); padding: 12px 18px; border-radius: 8px; color: #94a3b8; font-size: 14px; margin-top: 15px;">
                 🌍 <strong>International Investors:</strong> For USA or overseas customers who prefer a unified baseline, the workspace can be fully customized to denominate and calculate your holistic portfolio holdings completely in **USD ($)** layout rules.
             </div>
@@ -265,32 +274,63 @@
             </div>
         </section>
 
-        <!-- Feedback Form Section -->
+        <!-- UPI TRANSACTION UPLOAD FORM (Always Above Feedback with Active Formspree Route) -->
+        <section style="background: #0f172a; padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid #10b981;">
+            <h2 style="color: #10b981; font-size: 22px; margin-top: 0; margin-bottom: 8px; font-weight: 700;">Submit Manual UPI Proof of Payment</h2>
+            <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px; margin-top: 0;">Completed a manual transfer? Upload your verification confirmation screenshot directly to register your tracking account.</p>
+            
+            <form action="https://formspree.io/f/mjgqvzjz" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="payment-name" class="form-label">Full Name</label>
+                        <input type="text" id="payment-name" name="name" required placeholder="John Doe" class="form-input">
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="payment-email" class="form-label">Email Address (For Activation Links)</label>
+                        <input type="email" id="payment-email" name="_replyto" required placeholder="john@example.com" class="form-input">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="payment-utr" class="form-label">UPI Reference ID / UTR Token</label>
+                        <input type="text" id="payment-utr" name="utr_number" required placeholder="12-digit UTR Code" class="form-input">
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <label for="payment-file" class="form-label">Upload Receipt Screenshot</label>
+                        <input type="file" id="payment-file" name="screenshot_attachment" accept="image/*" required class="form-input" style="padding: 7px 10px;">
+                    </div>
+                </div>
+
+                <button type="submit" style="background-color: #10b981; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; align-self: flex-start; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);">
+                    Submit Payment Receipt
+                </button>
+            </form>
+        </section>
+
+        <!-- Feedback Form Section (With Active Formspree Route) -->
         <section style="background: #0f172a; padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid #334155;">
             <h2 style="color: #38bdf8; font-size: 22px; margin-top: 0; margin-bottom: 8px; font-weight: 700;">Share Your Feedback</h2>
             <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px; margin-top: 0;">Have a suggestion or feature request for the tracker? Let us know!</p>
             
-            <form action="YOUR_FORM_BACKEND_URL" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+            <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
-                        <label for="feedback-name" style="display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;">Your Name</label>
-                        <input type="text" id="feedback-name" name="name" required placeholder="John Doe" 
-                               style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px;">
+                        <label for="feedback-name" class="form-label">Your Name</label>
+                        <input type="text" id="feedback-name" name="name" required placeholder="John Doe" class="form-input">
                     </div>
                     <div style="flex: 1; min-width: 250px;">
-                        <label for="feedback-email" style="display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;">Email Address</label>
-                        <input type="email" id="feedback-email" name="email" required placeholder="john@example.com" 
-                               style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px;">
+                        <label for="feedback-email" class="form-label">Email Address</label>
+                        <input type="email" id="feedback-email" name="_replyto" required placeholder="john@example.com" class="form-input">
                     </div>
                 </div>
 
                 <div>
-                    <label for="feedback-message" style="display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600;">Message / Feature Request</label>
-                    <textarea id="feedback-message" name="message" rows="4" required placeholder="What features would make this tracker better for you?" 
-                              style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 12px 14px; color: #f8fafc; font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
+                    <label for="feedback-message" class="form-label">Message / Feature Request</label>
+                    <textarea id="feedback-message" name="message" rows="4" required placeholder="What features would make this tracker better for you?" style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 12px 14px; color: #f8fafc; font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
                 </div>
 
-                <button type="submit" style="background-color: #10b981; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; align-self: flex-start; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);">
+                <button type="submit" style="background-color: #38bdf8; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; align-self: flex-start; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);">
                     Submit Feedback
                 </button>
             </form>
@@ -310,7 +350,7 @@
         </footer>
     </main>
 
-    <!-- Modal: Manual UPI Onboarding Gateway -->
+    <!-- Modal: Manual UPI Informational Dashboard Overlay -->
     <div id="upi-modal" class="modal-overlay" onclick="closeOnOverlay(event, 'upi-modal')">
         <div class="modal-content" style="max-width: 580px;">
             <button class="modal-close" onclick="toggleModal('upi-modal')">&times;</button>
@@ -361,12 +401,8 @@
             </div>
 
             <div style="background: #0f172a; padding: 15px; border-radius: 8px; text-align: left; border-left: 3px solid #10b981;">
-                <div style="font-weight: 600; color: #f8fafc; font-size: 14px; margin-bottom: 4px;">3. Share Reference Receipt</div>
-                <p style="color: #94a3b8; font-size: 13px; margin: 0 0 8px 0;">Email a clean screenshot proof of your transaction confirmation to:</p>
-                <strong style="color: #38bdf8; font-family: monospace; font-size: 15px;">ypkshorts@gmail.com</strong>
-                <p style="color: #cbd5e1; font-size: 12px; margin: 10px 0 0 0; background: rgba(245, 158, 11, 0.05); padding: 8px; border-radius: 4px; line-height: 1.4; border: 1px dashed rgba(245, 158, 11, 0.2)">
-                    ⚠️ Notice: The email address used to share this verification document acts as the exclusive route where your master sheet links will be dispatched within 3-4 days.
-                </p>
+                <div style="font-weight: 600; color: #f8fafc; font-size: 14px; margin-bottom: 4px;">3. Record Submission Requirement</div>
+                <p style="color: #94a3b8; font-size: 13px; margin: 0;">Once your money transfer goes through, please close this popup menu window and paste your confirmation parameters into the active payment form on our home interface page layout right below.</p>
             </div>
         </div>
     </div>
