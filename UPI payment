@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual UPI Payment Gateway | Phoenix Tracker</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .pay-card {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
+            text-align: center;
+        }
+        .upi-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .title { color: #38bdf8; font-size: 28px; margin: 0 0 10px 0; font-weight: 800; }
+        .subtitle { color: #94a3b8; font-size: 15px; margin: 0 0 30px 0; }
+        
+        .step-box {
+            text-align: left;
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #38bdf8;
+        }
+        .step-title { font-weight: bold; color: #f8fafc; margin-bottom: 5px; font-size: 15px; }
+        .step-desc { color: #94a3b8; font-size: 14px; margin: 0; }
+        
+        .upi-id-container {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 16px;
+            color: #f59e0b;
+            font-weight: bold;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .copy-btn {
+            background: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover { background: #475569; }
+        
+        .action-btn {
+            background-color: #10b981;
+            color: #0f172a;
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: block;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+        .action-btn:hover { background-color: #059669; }
+        
+        .notice {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 25px;
+            border-top: 1px solid #334155;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pay-card">
+        <span class="upi-badge">🇮🇳 Secure Manual UPI Checkout</span>
+        <h1 class="title">Pay via UPI</h1>
+        <p class="subtitle">Complete your transaction manually below to gain full access to the workspace engine.</p>
+
+        <div class="step-box">
+            <div class="step-title">Step 1: Make Your Payment</div>
+            <p class="step-desc">Transfer your subscription amount (refer to Jotform tier pricing) directly to our verified handle:</p>
+            
+            <div class="upi-id-container">
+                <span id="upi-string">yash16kanabar@okaxis</span>
+                <button class="copy-btn" onclick="copyUPI()">Copy ID</button>
+            </div>
+
+            <a href="upi://pay?pa=yash16kanabar@okaxis&pn=Phoenix%20Tracker&cu=INR" 
+               id="upi-payment-button"
+               class="action-btn" 
+               onclick="handleUPIIntent(event)">
+                Tap to Pay via UPI App 📱
+            </a>
+        </div>
+
+        <div class="step-box" style="border-left-color: #10b981;">
+            <div class="step-title">Step 2: Submit Proof of Payment</div>
+            <p class="step-desc">
+                Take a clear screenshot of your successful transaction confirmation window and email it straight to:
+                <br><strong style="color: #38bdf8; display: block; margin-top: 8px; font-family: monospace; font-size: 15px;">ypkshorts@gmail.com</strong>
+            </p>
+        </div>
+
+        <div class="step-box" style="border-left-color: #f59e0b;">
+            <div class="step-title">Step 3: Account Activation</div>
+            <p class="step-desc">Our backend system will cross-reference your transaction reference token and provision your unique dashboard access file link within <strong>3 to 4 business days</strong>.</p>
+        </div>
+
+        <div class="notice">
+            Need processing assistance? Reach out directly via <span style="color: #cbd5e1;">ypkshorts@gmail.com</span>.
+        </div>
+    </div>
+
+    <script>
+        function handleUPIIntent(event) {
+            // Detect if the user device environment is a standard Desktop computer
+            const isDesktop = !/Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+            
+            if (isDesktop) {
+                // Intercept the request to block address invalid errors on PCs
+                event.preventDefault();
+                
+                // Automatically capture and copy the raw string value for them
+                const upiText = document.getElementById("upi-string").innerText;
+                navigator.clipboard.writeText(upiText);
+                
+                alert("UPI mobile applications can only launch automatically on smartphone devices.\n\nGood news: Your destination address (yash16kanabar@okaxis) has been automatically copied to your clipboard! Please paste it into your preferred banking dashboard to complete your checkout.");
+            }
+        }
+
+        function copyUPI() {
+            const upiText = document.getElementById("upi-string").innerText;
+            navigator.clipboard.writeText(upiText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = 'Copied!';
+                btn.style.backgroundColor = '#10b981';
+                setTimeout(() => {
+                    btn.innerText = 'Copy ID';
+                    btn.style.backgroundColor = '#334155';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
