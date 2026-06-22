@@ -10,8 +10,6 @@
         .form-input { width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 10px 14px; color: #f8fafc; font-size: 15px; }
         .form-input:focus { outline: none; border-color: #38bdf8; }
         .form-panel { background: #0f172a; padding: 30px; border-radius: 12px; margin-bottom: 35px; border: 1px solid #334155; }
-        .upload-tip { font-size: 13px; color: #94a3b8; margin: 5px 0 5px 0; line-height: 1.5; }
-        .upload-tip a { color: #38bdf8; text-decoration: underline; font-weight: 600; }
     </style>
 </head>
 <body style="font-family: 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
@@ -19,13 +17,11 @@
         
         <a href="index.html" style="color: #38bdf8; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px;">← Back to Main Dashboard</a>
 
-        <!-- Form 1: UPI Clearing Proof Verification -->
         <section class="form-panel" style="border-color: #10b981;">
             <h2 style="color: #10b981; font-size: 22px; margin-top: 0; margin-bottom: 8px;">Submit Manual UPI Proof of Payment</h2>
-            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Provide your ledger tracking coordinates below to activate verification pipelines.</p>
+            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Provide your transaction reference parameters below to activate verification pipelines.</p>
             
             <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-                <!-- Formspree Success Redirect Back to Homepage -->
                 <input type="hidden" name="_next" value="https://yash16kanabar.github.io/portfolio/index.html">
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -40,28 +36,20 @@
                 </div>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
-                        <label for="p-utr" class="form-label">UPI Reference Number / UTR Code</label>
-                        <input type="text" id="p-utr" name="utr_token" required placeholder="12-digit transaction index" class="form-input">
-                    </div>
-                    <div style="flex: 1; min-width: 250px;">
-                        <label for="p-link" class="form-label">Receipt Image URL Link</label>
-                        <input type="url" id="p-link" name="receipt_screenshot_url" required placeholder="https://postimg.cc/..." class="form-input">
+                        <label for="p-utr" class="form-label">UPI Reference Number / 12-Digit UTR Code</label>
+                        <input type="text" id="p-utr" name="utr_token" required placeholder="Ex: 349127839201" class="form-input">
                     </div>
                 </div>
-                <div class="upload-tip">
-                    📸 <strong>No Account Required:</strong> Click here to instantly upload your payment screenshot to <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">Postimages.org</a>. Once uploaded, simply copy their generated <strong>"Direct Link"</strong> and paste it into the URL box above.
-                </div>
-                <button type="submit" style="background: #10b981; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; align-self: flex-start;">Submit Payment Receipt</button>
+
+                <button type="submit" style="background: #10b981; color: #0f172a; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; align-self: flex-start;">Submit Payment Parameters</button>
             </form>
         </section>
 
-        <!-- Form 2: General System Feedback -->
         <section class="form-panel">
             <h2 style="color: #38bdf8; font-size: 22px; margin-top: 0; margin-bottom: 8px;">Share Your Feedback</h2>
             <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Have optimization concepts or layout ideas? Let us know!</p>
             
             <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-                <!-- Formspree Success Redirect Back to Homepage -->
                 <input type="hidden" name="_next" value="https://yash16kanabar.github.io/portfolio/index.html">
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
