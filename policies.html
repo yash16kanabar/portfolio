@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulatory Policies & Legal Center | Phoenix Tracker</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        .tab-btn { background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .tab-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+        .policy-content { display: none; background: #0f172a; border: 1px solid #334155; padding: 25px; border-radius: 8px; margin-top: 20px; }
+    </style>
+</head>
+<body style="font-family: 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #cbd5e1; line-height: 1.6;">
+    <main style="background: #1e293b; padding: 40px; border-radius: 16px; border: 1px solid #334155;">
+        
+        <a href="index.html" style="color: #38bdf8; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 25px;">← Back to Main Dashboard</a>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="tab-btn" id="btn-disclaimer" onclick="showTab('disclaimer')">Financial Disclaimer</button>
+            <button class="tab-btn" id="btn-refund" onclick="showTab('refund')">Refund Policy</button>
+            <button class="tab-btn" id="btn-privacy" onclick="showTab('privacy')">Privacy Policy</button>
+            <button class="tab-btn" id="btn-contact" onclick="showTab('contact')">Contact Support</button>
+        </div>
+
+        <div id="disclaimer" class="policy-content">
+            <h3 style="color: #38bdf8; margin-top: 0;">Financial Disclaimer</h3>
+            <p>The Phoenix Portfolio Tracker is an independent organizational computational template structure built strictly for tracking purposes.</p>
+            <p><strong>We do not act as licensed financial or wealth advisors.</strong> Calculation parameters are pulled from public domain logic structures inside Google Sheets drives. Risk strategies remain entirely localized under owner management parameters.</p>
+        </div>
+
+        <div id="refund" class="policy-content">
+            <h3 style="color: #38bdf8; margin-top: 0;">Refund & Cancellation Policy</h3>
+            <p>Because the digital asset allocation model provides immediately cloneable master structure templates upon purchase verification, <strong>all procurement sales are final and non-refundable</strong>.</p>
+        </div>
+
+        <div id="privacy" class="policy-content">
+            <h3 style="color: #38bdf8; margin-top: 0;">Data Privacy Protection Policy</h3>
+            <p>Your cloud metrics are entirely absolute. Zero systemic developer telemetry capture processes record or look inside your balances. Data runs fully isolated within your independent account silos.</p>
+        </div>
+
+        <div id="contact" class="policy-content">
+            <h3 style="color: #38bdf8; margin-top: 0;">Contact & Operations Center</h3>
+            <p>Facing formula anomalies or deployment challenges? Reach out directly to our assistance line coordinates:</p>
+            <ul style="padding-left: 20px; color: #f8fafc;">
+                <li><strong>Support Desk Email:</strong> ypkshorts@gmail.com</li>
+                <li><strong>SLA Processing Timeframe:</strong> 24-48 Business Hours</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function showTab(id) {
+            document.querySelectorAll('.policy-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            const target = document.getElementById(id);
+            if(target) target.style.display = 'block';
+            
+            const btn = document.getElementById('btn-' + id);
+            if(btn) btn.classList.add('active');
+        }
+
+        // Auto-detect anchor queries sent from the index page footer links
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialTab = urlParams.get('tab') || 'disclaimer';
+        showTab(initialTab);
+    </script>
+</body>
+</html>
