@@ -19,11 +19,15 @@
         
         <a href="index.html" style="color: #38bdf8; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px;">← Back to Main Dashboard</a>
 
+        <!-- Form 1: UPI Clearing Proof Verification -->
         <section class="form-panel" style="border-color: #10b981;">
             <h2 style="color: #10b981; font-size: 22px; margin-top: 0; margin-bottom: 8px;">Submit Manual UPI Proof of Payment</h2>
             <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Provide your ledger tracking coordinates below to activate verification pipelines.</p>
             
             <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- Redirects back to homepage after submission -->
+                <input type="hidden" name="_next" value="https://yash16kanabar.github.io/portfolio/index.html">
+                
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
                         <label for="p-name" class="form-label">Full Name</label>
@@ -34,6 +38,7 @@
                         <input type="email" id="p-email" name="_replyto" required placeholder="john@example.com" class="form-input">
                     </div>
                 </div>
+                
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
                         <label for="p-utr" class="form-label">UPI Reference Number / UTR Code</label>
@@ -44,6 +49,7 @@
                         <input type="url" id="p-link" name="receipt_screenshot_url" required placeholder="https://postimg.cc/..." class="form-input">
                     </div>
                 </div>
+                
                 <div class="upload-tip">
                     📸 <strong>No Account Required:</strong> Click here to instantly upload your payment screenshot to <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">Postimages.org</a>. Once uploaded, simply copy their generated <strong>"Direct Link"</strong> and paste it into the box above.
                 </div>
@@ -51,11 +57,14 @@
             </form>
         </section>
 
+        <!-- Form 2: General System Feedback -->
         <section class="form-panel">
             <h2 style="color: #38bdf8; font-size: 22px; margin-top: 0; margin-bottom: 8px;">Share Your Feedback</h2>
             <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Have optimization concepts or layout ideas? Let us know!</p>
             
             <form action="https://formspree.io/f/mjgqvzjz" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="hidden" name="_next" value="https://yash16kanabar.github.io/portfolio/index.html">
+                
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
                         <label for="f-name" class="form-label">Your Name</label>
