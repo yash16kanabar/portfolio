@@ -18,7 +18,7 @@
     <meta name="twitter:title" content="Phoenix Portfolio & Mutual Fund Tracker">
     <meta name="twitter:description" content="Consolidate equity, mutual funds, and total net worth in absolute real-time inside your own secure Google Sheets dashboard.">
 </head>
-<body style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
+<body style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 950px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; line-height: 1.6;">
 
     <main style="background: #1e293b; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155;">
         
@@ -85,23 +85,18 @@
             </div>
         </section>
 
-        <!-- Dynamic Navigation Routing Bar -->
-        <section style="text-align: center; background: #0f172a; padding: 25px; border-radius: 12px; border: 1px solid #334155; margin-bottom: 30px;">
-            <p style="font-size: 16px; font-weight: 700; color: #38bdf8; margin-top: 0; margin-bottom: 20px;">Deploy Your Workspace & Shared Frameworks:</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="payment.html" style="background: #0284c7; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px;">🛒 View Pricing & Checkout Plans</a>
-                <a href="feedback.html" style="background: #10b981; color: #0f172a; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px;">📬 Send Feedback & Screenshots</a>
-            </div>
-        </section>
+        <!-- FRONT PAGE EMBED LAYOUT (Embeds segregated files directly onto page) -->
+        <h3 style="color: #38bdf8; font-size: 20px; text-align: left; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 8px;">🛒 Procurement Desk & Checkout Paths</h3>
+        <iframe src="payment.html" style="width: 100%; height: 580px; border: none; border-radius: 12px; margin-bottom: 40px; background: transparent;" loading="lazy"></iframe>
+
+        <h3 style="color: #10b981; font-size: 20px; text-align: left; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 8px;">📬 Ledger Routing & Customer Feedback Forms</h3>
+        <iframe src="feedback.html" style="width: 100%; height: 640px; border: none; border-radius: 12px; margin-bottom: 40px; background: transparent;" loading="lazy"></iframe>
+
+        <h3 style="color: #64748b; font-size: 16px; text-align: left; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #334155; padding-bottom: 8px;">⚖️ System Disclaimers & Governance Regulations</h3>
+        <iframe src="policies.html" style="width: 100%; height: 350px; border: none; border-radius: 12px; margin-bottom: 20px; background: transparent;" loading="lazy"></iframe>
 
         <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #334155; text-align: center;">
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px;">
-                <a href="policies.html?tab=disclaimer" style="color: #94a3b8; text-decoration: underline; font-size: 14px;">Financial Disclaimer</a>
-                <a href="policies.html?tab=refund" style="color: #94a3b8; text-decoration: underline; font-size: 14px;">Refund Policy</a>
-                <a href="policies.html?tab=privacy" style="color: #94a3b8; text-decoration: underline; font-size: 14px;">Privacy Policy</a>
-                <a href="policies.html?tab=contact" style="color: #94a3b8; text-decoration: underline; font-size: 14px;">Contact Support</a>
-            </div>
-            <p style="color: #64748b; font-size: 13px; margin: 0;">&copy; 2026 Phoenix Tracker. Not affiliated with Google Inc.</p>
+            <p style="color: #64748b; font-size: 13px; margin: 0;">&copy; 2026 Phoenix Tracker. Independent engineering template tracker framework. Not affiliated with Google Inc.</p>
         </footer>
     </main>
 </body>
