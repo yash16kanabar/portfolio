@@ -25,7 +25,7 @@
             background: #1e293b;
             padding: 40px;
             border-radius: 16px;
-            max-width: 550px;
+            max-width: 580px;
             width: 100%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 1px solid #334155;
@@ -53,9 +53,47 @@
             margin-bottom: 25px;
             border-left: 4px solid #38bdf8;
         }
-        .step-title { font-weight: bold; color: #f8fafc; margin-bottom: 5px; font-size: 15px; }
-        .step-desc { color: #94a3b8; font-size: 14px; margin: 0; }
+        .step-title { font-weight: bold; color: #f8fafc; margin-bottom: 12px; font-size: 15px; }
+        .step-desc { color: #94a3b8; font-size: 14px; margin: 0 0 15px 0; }
         
+        /* Pricing Table Styles */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+            background: #1e293b;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .pricing-table th {
+            background: #334155;
+            color: #38bdf8;
+            text-align: left;
+            padding: 10px 12px;
+            font-weight: 600;
+        }
+        .pricing-table td {
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+            color: #cbd5e1;
+        }
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        .price-tag {
+            font-weight: bold;
+            color: #f8fafc;
+        }
+        .sample-link {
+            color: #38bdf8;
+            text-decoration: underline;
+        }
+        .sample-link:hover {
+            color: #7dd3fc;
+        }
+
         .upi-id-container {
             background: #0f172a;
             border: 1px solid #334155;
@@ -117,12 +155,36 @@
     <div class="pay-card">
         <span class="upi-badge">🇮🇳 Secure Manual UPI Checkout</span>
         <h1 class="title">Pay via UPI</h1>
-        <p class="subtitle">Complete your transaction manually below to gain full access to the workspace engine.</p>
+        <p class="subtitle">Select your tier from our official pricing plans below to complete your transaction manually.</p>
 
         <div class="step-box">
-            <div class="step-title">Step 1: Make Your Payment</div>
-            <p class="step-desc">Transfer your subscription amount (refer to Jotform tier pricing) directly to our verified handle:</p>
+            <div class="step-title">Step 1: Choose Tier & Transfer Amount</div>
+            <p class="step-desc">Review the standardized operational plans below. You can also view our <a class="sample-link" href="https://docs.google.com/spreadsheets/d/1gEkSQ83NY9rfyVHbts-NkFKtZFMJLXbc146OH18FUoo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Sample Automated Tracker Sheet</a> before subscribing.</p>
             
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Product Workspace Plan</th>
+                        <th>Pricing (INR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Automated Google Sheets Portfolio Tracker (30 Days)</td>
+                        <td class="price-tag">₹1,000</td>
+                    </tr>
+                    <tr>
+                        <td>Automated Google Sheets Portfolio Tracker (1 Year)</td>
+                        <td class="price-tag">₹10,000</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Automated Google Sheets Portfolio Tracker</td>
+                        <td style="color: #10b981; font-weight: 600;">FREE</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="step-desc" style="margin-top: 20px;">Send the exact tier amount to our verified payment address:</p>
             <div class="upi-id-container">
                 <span id="upi-string">yash16kanabar@okaxis</span>
                 <button class="copy-btn" onclick="copyUPI()">Copy ID</button>
@@ -139,14 +201,14 @@
         <div class="step-box" style="border-left-color: #10b981;">
             <div class="step-title">Step 2: Submit Proof of Payment</div>
             <p class="step-desc">
-                Take a clear screenshot of your successful transaction confirmation window and email it straight to:
+                Take a clear screenshot of your successful payment confirmation window showing the transaction reference ID, and email it straight to:
                 <br><strong style="color: #38bdf8; display: block; margin-top: 8px; font-family: monospace; font-size: 15px;">ypkshorts@gmail.com</strong>
             </p>
         </div>
 
         <div class="step-box" style="border-left-color: #f59e0b;">
             <div class="step-title">Step 3: Account Activation</div>
-            <p class="step-desc">Our backend system will cross-reference your transaction reference token and provision your unique dashboard access file link within <strong>3 to 4 business days</strong>.</p>
+            <p class="step-desc">Our backend system will verify your ledger entry records and securely provision your custom dashboard access file link within <strong>3 to 4 business days</strong>.</p>
         </div>
 
         <div class="notice">
